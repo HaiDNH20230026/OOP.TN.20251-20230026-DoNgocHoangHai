@@ -1,0 +1,38 @@
+1.
+Những đường dẫn .settings, bin, .classpath, và .project  nên được thêm vào .gitignore vì chúng là các tệp cấu hình (config file) hoặc tệp được biên dịch (compiled file) dành riêng cho máy cá nhân và Eclipse IDE.
+Các tệp như .settings, .project, .classpath chứa thông tin về đường dẫn tuyệt đối trên máy, phiên bản Java đang dùng, và các cài đặt riêng của Eclipse. Những cài đặt này sẽ khác nhau với mỗi lập trình viên.
+Thư mục bin chứa các tệp .class được biên dịch từ mã nguồn .java. Đây là các tệp có thể được tạo lại bất cứ lúc nào từ mã nguồn.
+
+Nếu không them thì:
+- Xung đột (Merge Conflicts): Khi người khác pull code về, Eclipse của họ sẽ tạo ra các tệp cấu hình khác, và khi push lên, Git sẽ báo cáo xung đột liên tục vì các tệp này không bao giờ giống nhau.
+
+- Repository phình to: Đưa các tệp .class (trong thư mục bin) lên kho lưu trữ sẽ làm nó phình to một cách không cần thiết. Lịch sử commit cũng sẽ bị nhiễu bởi các thay đổi không phải là mã nguồn.
+
+2. 
+IntelliJ IDEA:
+
+.idea/ (Thư mục chứa tất cả cài đặt của dự án, tương tự .settings).
+
+*.iml (Tệp cấu hình module).
+
+out/ (Thư mục chứa kết quả biên dịch, tương tự bin).
+
+Visual Studio Code (VSCode):
+
+.vscode/ (Thư mục này chứa các cài đặt workspace như settings.json, launch.json. Tuy nhiên, đôi khi người ta vẫn commit launch.json nếu nó quan trọng cho việc chạy dự án, nhưng các cài đặt riêng tư khác thì nên được bỏ qua).
+
+3.
+Để Git "quên" các tệp này (ngừng theo dõi) mà không xóa chúng khỏi máy, cần thực hiện 2 bước:
+
+Bước 1: Xóa tệp khỏi chỉ mục (index) của Git
+Sử dụng lệnh git rm --cached.
+
+Nếu là tệp tin (ví dụ: .classpath):
+git rm --cached .classpath
+
+Nếu là thư mục (ví dụ: bin): Thêm cờ -r (recursive - đệ quy):
+git rm -r --cached bin
+
+Bước 2: Commit sự thay đổi này
+
+git commit -m "Stop tracking Eclipse configuration files"
