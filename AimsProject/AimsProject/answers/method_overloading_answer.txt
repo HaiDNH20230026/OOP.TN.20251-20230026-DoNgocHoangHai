@@ -1,0 +1,6 @@
+Java báo lỗi Duplicate method addDVD
+Lỗi này xảy ra vì thêm phương thức addDVD(DigitalVideoDisc... discs) trong khi đã có phương thức addDVD(DigitalVideoDisc[] discs)
+
+Đối với Java, DigitalVideoDisc... discs (varargs) và DigitalVideoDisc[] discs (mảng) được coi là giống hệt nhau khi gọi hàm, dẫn đến lỗi "ambiguous method call" hoặc "duplicate method".
+
+Giải quyết bằng cách chỉ giữ lại một trong 2 hàm.
