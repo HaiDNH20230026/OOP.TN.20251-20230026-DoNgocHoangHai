@@ -34,15 +34,15 @@ public class Cart {
         }
     }
     
-    public void addDVD(DigitalVideoDisc ...discs) {
-        if (qtyOrdered + discs.length > MAX_NUMBERS_ORDERED) {
-            System.out.println("The cart is almost full");
-        } else {
-            for (DigitalVideoDisc disc : discs) {
-                addDVD(disc); 
-            }
-        }
-    }
+//    public void addDVD(DigitalVideoDisc ...discs) {
+//        if (qtyOrdered + discs.length > MAX_NUMBERS_ORDERED) {
+//            System.out.println("The cart is almost full");
+//        } else {
+//            for (DigitalVideoDisc disc : discs) {
+//                addDVD(disc); 
+//            }
+//        }
+//    }
 
     public void removeDVD(DigitalVideoDisc disc) {
         if (qtyOrdered == 0) {
