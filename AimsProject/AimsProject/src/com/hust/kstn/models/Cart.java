@@ -74,11 +74,17 @@ public class Cart {
     }
 
     public void print() {
-        System.out.println("=== Total items in cart: " + qtyOrdered + " ===");
-        System.out.println("=== All items in cart ===");
-        for (int i = 0; i < qtyOrdered; i++) {
-            System.out.println("[Title]: " + itemsIncart[i].getTitle() + ", [Cost]: " + itemsIncart[i].getCost());
+        System.out.println("======================= THE CURRENT CART ======================="); 
+        if (qtyOrdered == 0) {
+            System.out.println("The cart is empty."); 
+            System.out.println("================================================================");
+            return;
         }
+        System.out.println("Total items: " + qtyOrdered);        
+        for (int i = 0; i < qtyOrdered; i++) {
+            System.out.println(itemsIncart[i].toString()); 
+        }    
+        System.out.printf("Subtotal: %.2f $ %n", calculateTotalCost());
+        System.out.println("================================================================");
     }
-
 }
