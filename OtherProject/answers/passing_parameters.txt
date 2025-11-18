@@ -1,0 +1,49 @@
+Khi gọi swap(s1, s2), Java sao chép giá trị của tham chiếu s1 và s2 vào hai biến cục bộ o1 và o2 (nằm trong vùng nhớ Stack của hàm swap).
+Chỉ hoán đổi giá trị của hai biến cục bộ o1 và o2. Nó chỉ làm thay đổi việc "o1 trỏ vào đâu" và "o2 trỏ vào đâu" trong phạm vi hàm swap.
+Nó không hề tác động đến các biến s1, s2 ban đầu ở hàm main, cũng như không thay đổi nội dung của đối tượng trong vùng nhớ Heap. Do đó, sau khi hàm kết thúc, s1 vẫn trỏ vào đối tượng A, s2 vẫn trỏ vào đối tượng B.
+Như vậy Java là ngôn ngữ truyền tham trị
+
+Cách sửa
+public static void swap(Student s1, Student s2) {
+    String tmpName = s1.getName();
+    int tmpId = s1.getStudentId();
+    s1.setName(s2.getName());
+    s1.setStudentId(s2.getStudentId());
+    s2.setName(tmpName);
+    s2.setStudentId(tmpId);
+}
+
+Sơ đồ minh họa
+Trước khi gọi swap
+Stack (Main)           Heap
+------------           -------------------------
+s1  -------->          @Obj1: {id: 1, name: "A"}
+------------           -------------------------
+s2  -------->          @Obj2: {id: 2, name: "B"}
+------------           -------------------------
+
+Lưu biến tạm
+Stack (Swap)           Heap (Không đổi)
+------------           -------------------------
+s1  -------->          @Obj1: {id: 1, name: "A"}
+s2  -------->          @Obj2: {id: 2, name: "B"}
+tempId: 1              
+tempName: "A"
+
+Gán dữ lieu s2 sang s1
+Stack (Swap)           Heap
+------------           -------------------------
+s1  -------->          @Obj1: {id: 2, name: "B"} <--- Dữ liệu thay đổi
+------------           -------------------------
+s2  -------->          @Obj2: {id: 2, name: "B"}
+------------           -------------------------
+tempId: 1
+tempName: "A"
+
+Gán biến tạm sang s2
+Stack (Swap)           Heap
+------------           -------------------------
+s1  -------->          @Obj1: {id: 2, name: "B"} 
+------------           -------------------------
+s2  -------->          @Obj2: {id: 1, name: "A"} <--- Dữ liệu thay đổi
+------------           -------------------------
