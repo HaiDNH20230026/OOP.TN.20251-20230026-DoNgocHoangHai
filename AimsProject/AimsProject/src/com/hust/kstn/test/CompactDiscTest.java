@@ -25,7 +25,6 @@ public class CompactDiscTest {
         initialTracks.add(track3);
 
         CompactDisc cd = new CompactDisc(
-            1, 
             "Thriller",
             "Pop", 
             15.0, 
