@@ -14,7 +14,6 @@ public class BookTest {
         authors.add(author2);
 
         Book effectiveJava = new Book(
-            1,
             "Effective Java",
             "Programming",
             45.0,

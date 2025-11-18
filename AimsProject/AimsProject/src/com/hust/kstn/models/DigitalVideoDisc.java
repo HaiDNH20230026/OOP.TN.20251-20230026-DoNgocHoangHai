@@ -1,55 +1,13 @@
 package com.hust.kstn.models;
 
-public class DigitalVideoDisc {
-    private String title;
-    private String category;
+public class DigitalVideoDisc extends Disc{
     private String director;
     private int length;
-    private double cost;
-    
-    private int id;
-    private static int nbDigitalVideoDiscs = 0;
-
-    
-    public DigitalVideoDisc(String title) {
-        this.title = title;
-        this.id = ++nbDigitalVideoDiscs;
-    }
-
-    public DigitalVideoDisc(String category, String title, double cost) {
-        this.category = category;
-        this.title = title;
-        this.cost = cost;
-        this.id = ++nbDigitalVideoDiscs;
-    }
-
-    public DigitalVideoDisc(String director, String category, String title, double cost) {
-        this.director = director;
-        this.category = category;
-        this.title = title;
-        this.cost = cost;
-        this.id = ++nbDigitalVideoDiscs;
-    }
 
     public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
-        this.title = title;
-        this.category = category;
+    	super(title, cost, category);
         this.director = director;
         this.length = length;
-        this.cost = cost;
-        this.id = ++nbDigitalVideoDiscs;
-    }
-
-    public int getId() {
-        return id;
-    }
-    
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCategory() {
-        return category;
     }
 
     public String getDirector() {
@@ -60,16 +18,10 @@ public class DigitalVideoDisc {
         return length;
     }
 
-    public double getCost() {
-        return cost;
-    }
     @Override
     public String toString() {
-        return "DVD " + "[" + this.id + "] " 
-             + "[" + this.title + "] " 
-             + "[" + this.category + "] " 
+        return "DVD -" +  super.toString()
              + "[" + this.director + "] " 
-             + "[" + this.length + "] " 
-             + ": [" + this.cost + "] $";
+             + "[" + this.length + "] " ;
     }
 }

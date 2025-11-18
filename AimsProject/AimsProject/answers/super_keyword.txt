@@ -1,0 +1,3 @@
+-Gọi phương thức khởi tạo của lớp cha Media do Book kế thừa từ Media
+-Tái sử dung mã nguồn : tránh phải viết lại logic gán giá trị cho các thuộc tính title, cost, category và logic tăng ID tự dộng
+-Đảm bảo lớp cha của Book được khởi tạo đúng cách trước khi lớp con thực hiện các khởi tạo riêng
